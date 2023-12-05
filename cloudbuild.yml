@@ -9,8 +9,10 @@ steps:
   - name: maven:3-eclipse-temurin-17-alpine
     entrypoint: mvn
     args: ["package", "-Dmaven.test.skip=true"]
+    id: Generate jar file
   - name: gcr.io/cloud-builders/docker
-    args: ["build", "-t", "us-central1-docker.pkg.dev/charlesschwab-poc/devsecops/hellospring", "--build-arg=JAR_FILE=target/DevSecops_Java_Poc 1.0-SNAPSHOT", "."]
+    args: ["build", "-t", "us-central1-docker.pkg.dev/charlesschwab-poc/devsecops/hellospring", "--build-arg=JAR_FILE=target/DevSecops_Java_Poc-1.0-SNAPSHOT.jar", "."]
+    id: Build Docker image
 
 #Run Software Composition Analysis (SCA security scan) using Snyk in GCP DevSecOps Pipeline
   - name: 'ubuntu'
