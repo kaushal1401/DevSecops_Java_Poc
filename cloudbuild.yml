@@ -8,7 +8,6 @@ steps:
 
   - name: gcr.io/cloud-builders/docker
     args: ["build", "-t", "us-central1-docker.pkg.dev/charlesschwab-poc/devsecops/hellospring", "--build-arg=JAR_FILE=target/DevSecops_Java_Poc 1.0-SNAPSHOT", "."]
- images: ["us-central1-docker.pkg.dev/charlesschwab-poc/devsecops/hellospring"]
 
 #Run Software Composition Analysis (SCA security scan) using Snyk in GCP DevSecOps Pipeline
   - name: 'ubuntu'
@@ -45,3 +44,4 @@ artifacts:
     location: 'gs://devsecopspoc'
     paths:
       - zap_report.html
+images: ["us-central1-docker.pkg.dev/charlesschwab-poc/devsecops/hellospring"]
